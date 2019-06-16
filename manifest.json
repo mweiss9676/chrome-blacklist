@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Blacklist Domain",
+  "short_name": "Blacklist",
+  "description": "Blacklist a Domain to prevent Google search from displaying results",
+  "version": "0.0.1",
+  "minimum_chrome_version": "38",
+  "permissions": [
+    "contextMenus", 
+    "tabs",
+    "storage"],
+  "icons": {
+    "16": "assets/no-stopping.png"
+  },
+  "background": {"page": "background.html"},
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["Scripts/jquery.min.js", "blacklist.js"],
+    "run_at": "document_end",
+    "all_frames": false
+    }],
+  "options_page": "options.html"
+}

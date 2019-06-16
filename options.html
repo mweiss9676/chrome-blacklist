@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #blacklist-container {
+            width: 400px;
+        }
+
+        #blacklisted {
+            border: 1px solid #eee;
+            width: 100%;
+            padding: 20px 20px;
+        }
+        #blacklisted ul {
+            list-style: none;  
+            padding: 0; 
+        }
+        #blacklisted ul li {
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+        }
+    </style>
+    <head>
+        <script type="text/javascript" src="Scripts/jquery.min.js"></script>
+        <script src="options.js"></script>
+    </head>
+    <body>
+        <div id="blacklist-container">
+        <h2 style="text-align: center;">Domain blacklist</h2>
+        <p style="text-align: center;">Select items from the list to remove them from your blacklist</p>
+        <div id="blacklisted">
+        </div>
+    </div>
+    </body>
+</html>
