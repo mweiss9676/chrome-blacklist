@@ -7,15 +7,18 @@
   "minimum_chrome_version": "38",
   "permissions": [
     "contextMenus", 
+    "storage",
     "tabs",
-    "storage"],
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"],
   "icons": {
     "16": "assets/no-stopping.png"
   },
-  "background": {"page": "background.html"},
+  "background": { "page": "background.html", "persistent": true },
   "content_scripts": [{
     "matches": ["<all_urls>"],
-    "js": ["Scripts/jquery.min.js", "blacklist.js"],
+    "js": ["Scripts/jquery.min.js"],
     "run_at": "document_end",
     "all_frames": false
     }],

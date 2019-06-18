@@ -18,3 +18,39 @@ chrome.contextMenus.create({
   onclick: blacklistDomain
 });
 
+var _queryString = '';
+
+chrome.webRequest.onHeadersReceived.addListener(function (details) {
+  if (_queryString == "") {
+    _queryString += '+-site:'
+    chrome.storage.sync.get('domains', function(result) {
+      var blacklist = result.domains;
+      if(blacklist !== null && blacklist !== undefined) {
+        _queryString += blacklist.join('+-site:');
+      }
+    });   
+    chrome.tabs.reload();
+  }
+}, {
+  urls: ['*://www.google.com/*']
+}, ["blocking", "responseHeaders"]);
+
+chrome.webRequest.onBeforeRequest.addListener(function(details) {
+  if(_queryString !== ''){
+    return {
+      redirectUrl: details.url.replace(/q(?:\\)?=([^&]+)/, '$&' + _queryString)
+    };
+  }
+},
+{ urls: ['*://www.google.com/*'] },
+['blocking']);
+
+
+
+
+
+
+
+
+
+

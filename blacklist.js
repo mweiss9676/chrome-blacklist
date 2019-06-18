@@ -3,8 +3,7 @@ $(function() {
         chrome.storage.sync.get(['domains'], function(result) {
             var anchors = $('.g a');
             var blacklist = result.domains;
-            console.log(...blacklist);
-
+            
             anchors.each((ind, val) => {
                 var link = $(val);
                 var href = link[0].hostname;
@@ -15,5 +14,17 @@ $(function() {
                 }
             })
         });
-    }
+    }  
+    
+    $('form[action="/search"]').submit(function(e){
+        e.preventDefault();
+
+    })
 })
+
+
+
+
+
+
+
